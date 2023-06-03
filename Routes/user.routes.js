@@ -13,12 +13,7 @@ UserRouter.get("/", async(req,res)=> {
 
 
 // POST SIGNUP LOGIC
-UserRouter.post("/signup", async (req, res) => {
-    const { email, password, firstName, lastName } = req.body;
-    const userPresent = await Usermodel.findOne({ email })
-    if (userPresent) {
-        res.send("Try loggin in, already exist")
-    }
+
     else {
         try {
             bcrypt.hash(password, 4, async function (err, hash) {
